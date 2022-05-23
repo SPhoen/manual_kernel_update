@@ -3,11 +3,11 @@ MACHINES = {
   # VM name "kernel update"
   :"kernel-update" => {
               # VM box
-              :box_name => "centos/7",
+              :box_name => "SPhoenix/centos-7-5",
               # VM CPU count
               :cpus => 2,
               # VM RAM size (Mb)
-              :memory => 1024,
+              :memory => 4096,
               # networks
               :net => [],
               # forwarded ports
@@ -17,6 +17,7 @@ MACHINES = {
 
 Vagrant.configure("2") do |config|
   MACHINES.each do |boxname, boxconfig|
+    config.vm.boot_timeout = 1200
     # Disable shared folders
     config.vm.synced_folder ".", "/vagrant", disabled: true
     # Apply VM config
